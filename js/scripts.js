@@ -113,6 +113,14 @@ for (let i = 0; i < baseDeDatos.length; i++) {
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                 <div class="text-center"><button  id="toastifyAgregar" onclick='agregarAlCarrito(${JSON.stringify(baseDeDatos[i])})'  class="btn btn-outline-dark mt-auto">Agregar al carrito</button></div>
             </div>
+            <div class="contenedor">
+			<form action="" id="formulario" class="formulario">
+				<input type="text" id="link" placeholder="Escribe el texto o URL" />
+				<button class="btn">Generar QR</button>
+			</form>
+
+			<div id="contenedorQR" class="contenedorQR"></div>
+		</div>
         </div>
     </div>
     ` : aux +=`
@@ -229,6 +237,7 @@ sweetMensajeCarrito.addEventListener("click", () => {
         title: '¡Este es tu carrito!',
         text: '¿Está lleno?',
         icon: 'success',
+        footer:'Esperemos que encuentres tu lugar :)',
         confirmButtonText: '¡Sigamos adelante!',
         iconColor: '#141619',
         iconHtml: '<i class="bi bi-cart-fill"></i>',
@@ -255,8 +264,6 @@ toastifyHome.addEventListener("click", () =>{
     },
   }).showToast(); 
 })
-
-
 
 
 
