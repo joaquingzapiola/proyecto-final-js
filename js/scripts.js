@@ -135,7 +135,20 @@ document.getElementById("contador").innerHTML = auxCarrito;
 }
 
 function agregarAlCarrito(producto){
-    carrito.push(producto);
+   carrito.push(producto); 
+   Toastify({
+        text: "¡Agregado! :)",
+        duration: 3000,
+        destination: 'index.html',
+        newWindow: false,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+        background: "linear-gradient(to right, #1b8f36, #22b544, #29db52)",
+        },
+    }).showToast();
     localStorage.setItem("carrito", JSON.stringify(carrito));
     let auxPrecioTotal = 0; 
     for(let i = 0; i < carrito.length; i++){
@@ -152,6 +165,19 @@ document.getElementById("contador").innerHTML = auxCarrito;
 
  function borrarProducto(){
     const nuevoCarrito = [];
+    Toastify({
+        text: "Borrado del carrito : /",
+        duration: 3000,
+        destination: 'index.html',
+        newWindow: false,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+        background: "linear-gradient(to right, #cd0e18, #f3101c, #ff1010)",
+        },
+      }).showToast(); 
     for (let i = 0; i < carrito.length; i++) {
         (i != 0) && nuevoCarrito.push(carrito[i]);
     }
@@ -172,7 +198,7 @@ carrito = []
 }
 
 let auxBorrar = `
-    <button onclick="borrarProducto()" id="toastifyBorrar" class="btn btn-outline-dark" type="submit">
+    <button onclick="borrarProducto()" class="btn btn-outline-dark" type="submit">
         <i class="bi bi-cart-x-fill"></i> Borrar Carrito
     </button>
 `;
@@ -230,41 +256,10 @@ toastifyHome.addEventListener("click", () =>{
   }).showToast(); 
 })
 
-const toastifyBorrar = document.querySelector("#toastifyBorrar")
 
-toastifyBorrar.addEventListener("click", () =>{
-   Toastify({
-    text: "Borrado del carrito : /",
-    duration: 3000,
-    destination: 'index.html',
-    newWindow: false,
-    close: true,
-    gravity: "top", 
-    position: "right", 
-    stopOnFocus: true, 
-    style: {
-    background: "linear-gradient(to right, #cd0e18, #f3101c, #ff1010)",
-    },
-  }).showToast(); 
-})
 
-const toastifyAgregar = document.querySelector("#toastifyAgregar")
 
-toastifyAgregar.addEventListener("click", () =>{
-   Toastify({
-    text:"¡Agregado! :)" ,
-    duration: 3000,
-    destination: 'index.html',
-    newWindow: false,
-    close: true,
-    gravity: "bottom", 
-    position: "center", 
-    stopOnFocus: true, 
-    style: {
-    background: "linear-gradient(to right, #1b8f36, #22b544, #29db52)",
-    },
-  }).showToast(); 
-})
+
 
 
 
