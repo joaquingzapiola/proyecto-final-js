@@ -146,7 +146,7 @@ h1{
 .h2Usuarios{
     text-align: center;
     background-color: #003a73;
-    border-radius: 700px;
+    border-radius:  400px 400px 0 0;
     width: 28%;
     margin-left: 35.6%;
     color: #fff;
@@ -156,7 +156,7 @@ h1{
 
 .h2Usuarios:hover{
     background-color: #fff;
-    border-radius: 700px;
+    border-radius:  400px 400px 0 0;
     width: 28%;
     margin-left: 35.6%;
     color: #003a73;
@@ -167,10 +167,35 @@ h1{
     text-align: center;
     list-style: none;
     background-color: #003a73;
-    border-radius: 10px;
+    border-radius: 0  0  100px 100px;
     width: 23%;
     margin-left: 38.2%;
     color: #eaefff;
     font-weight: 600;
     padding-bottom: 5px;
+}
+
+.h3Usuarios{
+    text-align: center;
+    background-color: #fff ;
+    border-radius:  0 0 400px 400px;
+    width: 28%;
+    margin-left: 35.6%;
+    color: #003a73;
+    padding-bottom: 5px;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.h3Usuarios span{
+    font-weight: bold;
+}
+
+.h3Usuarios:hover{
+    background-color:#003a73;
+    border-radius:  0 0 400px 400px;
+    width: 28%;
+    margin-left: 35.6%;
+    color: #fff;
+    transition: 0.5s;
 }
