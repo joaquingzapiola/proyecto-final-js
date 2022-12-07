@@ -143,3 +143,34 @@ h1{
     bottom: 78px;
 }
 
+.h2Usuarios{
+    text-align: center;
+    background-color: #003a73;
+    border-radius: 700px;
+    width: 28%;
+    margin-left: 35.6%;
+    color: #fff;
+    padding-bottom: 5px;
+    font-weight: 600;
+}
+
+.h2Usuarios:hover{
+    background-color: #fff;
+    border-radius: 700px;
+    width: 28%;
+    margin-left: 35.6%;
+    color: #003a73;
+    transition: 0.5s;
+}
+
+.listaDeUsuarios{
+    text-align: center;
+    list-style: none;
+    background-color: #003a73;
+    border-radius: 10px;
+    width: 23%;
+    margin-left: 38.2%;
+    color: #eaefff;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
