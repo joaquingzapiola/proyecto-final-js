@@ -12,34 +12,39 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap-Toastify)-->
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+        <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script type="text/javascript">
+        emailjs.init('5p5RqwJLwyVOESkuZ')
+        </script>
     </head>
     <body class="body">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!"><img src="img/aeroplano.png" alt="imagen logo avion"> Viajar</a>
+                <a class="navbar-brand" href="index.html"><img src="img/aeroplano.png" alt="imagen logo avion"> Viajar</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a id="toastifyHome" class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="./views/404.html" target="_blank">Nosotros</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">Todos los productos</a></li>
+                                <li><a class="dropdown-item" href="./views/404.html">Todos los productos</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Populares</a></li>
-                                <li><a class="dropdown-item" href="#!">Novedades</a></li>
+                                <li><a class="dropdown-item" href="./views/404.html">Populares</a></li>
+                                <li><a class="dropdown-item" href="./views/404.html">Novedades</a></li>
                             </ul>
                         </li>
                     </ul>
                     <form class="d-flex">
                         <button id="sweetMensajeCarrito" class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
-                            Carrito
+                            <a class="linkCarrito" href="/views/carrito.html">Carrito</a> 
                             <span class="badge bg-dark text-white ms-1 rounded-pill" id="precioTotal">0</span>
                         </button>
                         <span id="contador"></span>
@@ -65,7 +70,7 @@
             <div class="col">
                 <h2 class="h2Usuarios" id="titulo">¡Clientes top!</h2>
                 <h3 class="h3Usuarios">Si quieres pertencer a este selecto grupo y conseguir descuentos, entonces <span>¡compra tu paquete!</span></h3>
-                <ul id="listaUsuarios" class="listaDeUsuarios">
+                <ul id="listaClientesTop" class="listaDeUsuarios">
 
                 </ul>
             </div>
@@ -92,6 +97,24 @@
             <div class="result" id="result"></div>
         </div>
     </div>
+    <div class="divForm">
+        <h4>Formulario de contacto:</h4>
+        <form id="form">
+            <div class="field">
+            <label for="from_name">Nombre</label>
+            <input type="text" name="from_name" id="from_name">
+            </div>
+            <div class="field">
+            <label for="message">Mensaje</label>
+            <input type="text" name="message" id="message">
+            </div>
+            <div class="field">
+            <label for="email_id">Email</label>
+            <input type="text" name="email_id" id="email_id">
+            </div>
+        <input type="submit" id="button" value="Send Email" >
+        </form>
+    </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; VIAJAR Website 2022</p></div>
@@ -102,7 +125,8 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="js/classProducto.js"></script>
-        <script src="js/usuarios.js"></script>
+        <script src="js/usuariosApi.js"></script>
+        <script src="js/email.js"></script>
         <script src="js/scripts.js"></script>
     </body>
 </html>

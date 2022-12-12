@@ -39,6 +39,15 @@ function presupeustoUsuario(destino, presupuesto, balance){
         </div>
     </div>
     `
+    Swal.fire({
+        title: '¡Excelente!',
+        text: 'Realizaste tu presupuesto',
+        icon: 'success',
+        confirmButtonText: 'Continuar :)',
+        iconColor: '#4f3b94',
+        iconHtml: '<i class="bi bi-cash-coin"></i>',
+        allowOutsideClick: false,
+    })
     result.appendChild(dataPrint);
 
     reset();
@@ -95,8 +104,6 @@ baseDeDatos.forEach((el)=>{
 })
 
 
-
-
 let aux = ``; 
 for (let i = 0; i < baseDeDatos.length; i++) {
     baseDeDatos[i].stock > 0 ? aux += `
@@ -124,48 +131,70 @@ document.getElementById("productos").innerHTML=aux;
 
 //TODO Nodo Carrito 
 
-
+console.log(carrito)
 if (localStorage.getItem('carrito') != null) {
 let valorCarrito = JSON.parse(localStorage.getItem('carrito'));
 carrito = valorCarrito;
+
 let auxCarrito = `
 <div class="badge bg-dark text-white ms-1 rounded-pill align-middle">Productos: ${carrito.length}</div>
 `
 document.getElementById("contador").innerHTML = auxCarrito; 
 }
 
-function agregarAlCarrito(producto){
-   carrito.push(producto); 
-   Toastify({
-        text: "¡Agregado! :)",
-        duration: 3000,
-        destination: 'index.html',
-        newWindow: false,
-        close: true,
-        gravity: "bottom",
-        position: "right",
-        stopOnFocus: true,
-        style: {
+function agregarAlCarrito(producto) {
+    if (carrito.some(p => p.nombre === producto.nombre)) {
+    carrito.push(producto);
+    Swal.fire({
+        title: 'Este producto se agregó otra vez en el carrito',
+        icon: 'info',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Confirmar'
+    });
+    } else {
+    carrito.push(producto);
+    }
+    Toastify({
+    text: "¡Agregado! :)",
+    duration: 3000,
+    destination: 'index.html',
+    newWindow: false,
+    close: true,
+    gravity: "bottom",
+    position: "right",
+    stopOnFocus: true,
+    style: {
         background: "linear-gradient(to right, #1b8f36, #22b544, #29db52)",
-        },
+    },
     }).showToast();
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    let auxPrecioTotal = 0; 
-    for(let i = 0; i < carrito.length; i++){
-        auxPrecioTotal += carrito[i].precio;
+    let auxPrecioTotal = 0;
+    for (let i = 0; i < carrito.length; i++) {
+    auxPrecioTotal += carrito[i].precio;
     }
-    document.getElementById("precioTotal").innerHTML="$"+parseFloat(auxPrecioTotal); 
+    document.getElementById("precioTotal").innerHTML = "$" + parseFloat(auxPrecioTotal);
     let auxCarrito = `
-<div class="badge bg-dark text-white ms-1 rounded-pill align-middle">Productos: ${carrito.length}</div>
-`
-document.getElementById("contador").innerHTML = auxCarrito;
+    <div class="badge bg-dark text-white ms-1 rounded-pill align-middle">Productos: ${carrito.length}</div>
+    `;
+    document.getElementById("contador").innerHTML = auxCarrito;
+
+
 }
 
- //TODO Nodo Borrar carrito
 
+ //TODO Nodo Borrar carrito
+/*
  function borrarProducto(){
     const nuevoCarrito = [];
-    Toastify({
+    const precioTotal = carrito.reduce((total, producto) => total + producto.precio, 0);
+    document.getElementById("precioTotal").innerHTML="$"+0; 
+    let auxCarrito = `
+<div class="badge bg-dark text-white ms-1 rounded-pill align-middle">Productos: 0 </div>
+`
+document.getElementById("contador").innerHTML = auxCarrito;
+localStorage.removeItem('carrito');
+carrito = []
+Toastify({
         text: "Borrado del carrito : /",
         duration: 3000,
         destination: 'index.html',
@@ -178,87 +207,48 @@ document.getElementById("contador").innerHTML = auxCarrito;
         background: "linear-gradient(to right, #cd0e18, #f3101c, #ff1010)",
         },
       }).showToast(); 
-    for (let i = 0; i < carrito.length; i++) {
-        (i != 0) && nuevoCarrito.push(carrito[i]);
-    }
-    localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
-    carrito = nuevoCarrito; 
-    let auxPrecioTotal = 0; 
-    for(let i = 0; i < carrito.length; i++){
-        auxPrecioTotal += carrito[i].precio;
-    }
-    document.getElementById("precioTotal").innerHTML="$"+0; 
+}
+*/
+
+function borrarProducto(indice) {
+    carrito.splice(indice, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    const precioTotal = carrito.reduce((total, producto) => total + producto.precio, 0);
+    document.getElementById('precioTotal').innerHTML = `$ ${precioTotal}`;
     let auxCarrito = `
 <div class="badge bg-dark text-white ms-1 rounded-pill align-middle">Productos: 0 </div>
 `
-
 document.getElementById("contador").innerHTML = auxCarrito;
 localStorage.removeItem('carrito');
 carrito = []
+
+   
 }
 
 let auxBorrar = `
-    <button onclick="borrarProducto()" class="btn btn-outline-dark" type="submit">
+    <button  onclick="borrarProducto()" id="toastifyBorrar"class="btn btn-outline-dark" type="submit">
         <i class="bi bi-cart-x-fill"></i> Borrar Carrito
     </button>
 `;
 document.getElementById("borrarDelCarrito").innerHTML=auxBorrar;
 
-// TODO SWAL
 
 
-const sweetPresupuesto = document.querySelector("#sweetPresupuesto");
+const toastifyBorrar = document.querySelector("#toastifyBorrar");
 
-sweetPresupuesto.addEventListener("click", () => {
-    Swal.fire({
-        title: '¡Excelente!',
-        text: 'Realizaste tu presupuesto.. ¿O no?',
-        icon: 'success',
-        confirmButtonText: 'Continuar :)',
-        iconColor: '#4f3b94',
-        iconHtml: '<i class="bi bi-cash-coin"></i>',
-        allowOutsideClick: false,
-    })
-})
-
-
-const sweetMensajeCarrito = document.querySelector("#sweetMensajeCarrito");
-
-sweetMensajeCarrito.addEventListener("click", () => {
-    Swal.fire({
-        title: '¡Este es tu carrito!',
-        text: '¿Está lleno?',
-        icon: 'success',
-        footer:'Esperemos que encuentres tu lugar :)',
-        confirmButtonText: '¡Sigamos adelante!',
-        iconColor: '#141619',
-        iconHtml: '<i class="bi bi-cart-fill"></i>',
-        allowOutsideClick: false,
-    })
-})
-
-// TODO TOAST
-
-const toastifyHome = document.querySelector("#toastifyHome")
-
-toastifyHome.addEventListener("click", () =>{
-   Toastify({
-    text: "Ya estás aquí",
+toastifyBorrar.addEventListener("click", () =>{ Toastify({
+    text: "Borrado del carrito : /",
     duration: 3000,
-    destination: 'index.html',
+    destination: false, 
     newWindow: false,
     close: true,
     gravity: "top", 
-    position: "center", 
+    position: "right", 
     stopOnFocus: true, 
     style: {
-    background: "linear-gradient(to right, #261c47, #32255f, #4e3a93)",
+    background: "linear-gradient(to right, #cd0e18, #f3101c, #ff1010)",
     },
-  }).showToast(); 
-})
-
-
-
+    }).showToast();} )
 
 
 

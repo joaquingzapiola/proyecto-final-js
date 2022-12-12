@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/aeroplano.png" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap-Toastify)-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    </head>
+    <title>Carrito</title>
+</head>
+<body>
+    <div class="contenedor-carrito">
+        <aside>
+            <header>
+                <a href="/index.html" class="logoCarrito">VIAJAR</a>
+            </header>
+            <nav>
+                <ul>
+                    <li>
+                        <a class="botonMenuCarrito botonVolverCarrito" href="/index.html">
+                            <i class="bi bi-arrow-return-left"></i> Ir a la tienda
+                        </a>
+                    </li>
+                    <li>
+                        <a class="botonMenuCarrito botonVolverCarrito active" href="./carrito.html">
+                            <i class="bi bi-cart-fill"></i> Carrito
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <p class="textoFooterCarrito">Copyright &copy; VIAJAR Website 2022</p>
+            </footer>
+        </aside>
+        <main class="mainCarrito">
+            <h2 class="tituloCarrito">Carrito</h2>
+            <div class="contenedorCarrito">
+                <p id="carritoVacio" class="carritoVacio">¡El carrito esta vacio!</i></p>
+
+                <div id="carritoProductos" class="carritoProductos disabled">
+                </div>
+
+                <div id="carritoAcciones" class="carritoAcciones disabled">
+                    <div class="carritoAccionesIzquierda">
+                        <button id="carritoAccionesVaciar" class="carritoAccionesVaciar">Eliminar todo</button>
+                    </div>
+                    <div class="carritoAccionesDerecha">
+                        <div class="carritoAccionesTotal">
+                            <p></p>
+                            <p id="total"></p>
+                        </div>
+                        <button id="carritoAccionesComprar" class="carritoAccionesComprar">Comprar</button>
+                    </div>
+                </div>
+
+                <p id="carritoComprado" class="carritoComprado disabled">¡Excelente, has comprado!</p>
+
+            </div>
+        </main>
+    </div>
+    
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/classProducto.js"></script>
+    <script src="/js/carrito.js"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>
